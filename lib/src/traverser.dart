@@ -10,7 +10,7 @@ class ElementNotFoundException implements Exception {
 
 /// JSONTraverse class, implements the query method as well
 class JSONTraverse {
-  Map<String, dynamic> decodedJSON;
+  late final Map<String, dynamic> decodedJSON;
 
   /// The constructor converts the `jsonString` to `Map<String, dynamic>`
   /// which is used by the `query` method.
@@ -19,14 +19,14 @@ class JSONTraverse {
   }
 
   /// The query method takes `queryString` and then splits into an array of
-  /// strings. The converted map(that is, `decodedJSON`) is then traversed using 
+  /// strings. The converted map(that is, `decodedJSON`) is then traversed using
   /// the splitted strings, reducing it at every step.
   dynamic query(String queryString) {
     var splittedString = queryString.split('.');
     dynamic reduced = decodedJSON;
     for (var query in splittedString) {
       if (reduced is List) {
-        num index;
+        int index;
         try {
           index = int.parse(query);
         } on FormatException {
@@ -40,7 +40,7 @@ class JSONTraverse {
         } on NoSuchMethodError {
           throw ElementNotFoundException('The query string does not lead to a'
               'valid JSON field. Please check the string. The query failed while'
-              'accessing the field `${query}`');
+              'accessing the field `$query`');
         }
       }
     }

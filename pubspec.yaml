@@ -5,7 +5,7 @@ description: Parse deeply nested JSON using simple query strings with dot separa
 homepage: https://github.com/ayan-b/json_traverse
 
 environment:
-  sdk: ">=2.4.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
 
